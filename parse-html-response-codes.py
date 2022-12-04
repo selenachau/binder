@@ -38,7 +38,8 @@ from requests.utils import requote_uri
 import xml.dom.pulldom
 import xml.dom.minidom
 import xml.sax.saxutils
-
+import pandas as pd    
+from isbnlib import canonical 
 
 UA = 'isbnlib (gzip)'
 myheaders = {'User-Agent': UA}
@@ -148,14 +149,15 @@ def fix_isbn(isbn):
     else:
         return None
 
-isbn_list = ["9789004335462","9781526109538"]
-lcc_list = []
-
-
-for i in isbn_list:
-    parmvalue =i
-    x = get_oclc_data(parmtype, parmvalue)
-    lcc_list.append(x)
-print(lcc_list)
 
 # create new function to be used only if ISBNs need validation.
+def clean_isbn(row):
+    x = canonical(row[0])
+    return get_oclc_data(parmtype, x)
+
+
+df = pd.read_csv('isbns.csv', dtype="string", names=['isbn'])
+df['lcc'] = df.apply(clean_isbn, axis=1)
+
+df.to_csv('isbn-lcc.csv', encoding='utf-8', index=False)
+
