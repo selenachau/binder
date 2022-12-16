@@ -3,7 +3,7 @@
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/selenachau/binder/HEAD)
 
 Description: 
-Collection-centered data for ebook use assessment have varied descriptive metadata. COUNTER allows consistency across vendor platforms, but is limited to providing ISBNs. This session introduces a Python script to fill in Library of Congress classification data so that collection assessment by subject matter is possible. It extend COUNTER usage reports to assess by LC class. This project was presented at library conferences in 2023.
+Collection-centered data for ebook use assessment have varied descriptive metadata. COUNTER allows consistency across vendor platforms, but is limited to providing ISBNs. This session introduces a Python script to fill in Library of Congress classification data so that collection assessment by subject matter is possible. This project extends COUNTER usage reports to assess by LC class and was presented at library conferences in 2023.
 
 Contents: 
 Two Jupyter Notebooks - one a walkthrough that demonstrates python isbnlib library and OCLC Classify API, and another (quick convert) that allows the user to directly use the tool. Two test csv files - one is a test input file for the quick convert notebook and one is a test output file for the quick convert notebook.
