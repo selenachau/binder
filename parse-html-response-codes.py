@@ -3,32 +3,26 @@
 """
 Created on Tue Nov 22 14:35:41 2022
 Original/inspiration from https://github.com/mbelvadi/lcc_from_isbn, Copyright 2021 Melissa Belvadi Open Source License CC-BY-NC-SA granted
-Changes: used OCLC Classify portion and simplified to use an input of isbn list. Simplified ISBN cleaning as well.
+Changes: used OCLC Classify portion, simpliefied ISBN cleaning, and simplified to use an input file of ISBNs. Can use within Binder.
 
 
+Examples for different response codes for an ISBN query:
 http://classify.oclc.org/classify2/Classify?isbn=978157506752&summary=true
-<response code="101"/> no match
+<response code="101"/> 
+Meaning: no match
 
 
 http://classify.oclc.org/classify2/Classify?isbn=9789004335462&summary=true
 <response code="0"/> or <response code="2"/>
-   <recommendations>
-      <lcc>
-         <mostPopular holdings="673" nsfa="HX11.I46" sfa="HX11.I46"/>
+Retrieve most popular LCC from <recommendations><lcc><mostPopular holdings="673" nsfa="HX11.I46" sfa="HX11.I46"/>
 
 
 http://classify.oclc.org/classify2/Classify?isbn=9781526109538&summary=true
-<response code="4"/> need to go to a subpage
-
-Additional options: 
-    clean ISBNs with python library isbnlib
-                                                                                                                          
+<response code="4"/> 
+need to navigate to a subpage to retrieve the most popular LCC
 
 
-@author: selenachau-local
-
-parmvalue=isbns
-
+If the response code is 102, OCLC is reporting an unexpected error; can check the record by hand.
 """
 
 import logging
